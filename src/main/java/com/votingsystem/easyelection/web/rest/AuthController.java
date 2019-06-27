@@ -10,8 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.math.BigDecimal;
 import java.net.URI;
 import java.util.Base64;
+import java.util.List;
 
 
 @RestController
@@ -47,6 +50,12 @@ public class AuthController {
         String uri = "data:image/jpeg;base64," + new String(Base64.getEncoder().encode(image));
         userPrinciple.setImageUrl(uri);
         return ResponseEntity.ok(userPrinciple);
+    }
+
+    @GetMapping("/test")
+    public ResponseEntity<?> getAllUsers() {
+       List<UserModel> models = userService.getUserList();
+        return ResponseEntity.ok(models);
     }
 
 }
