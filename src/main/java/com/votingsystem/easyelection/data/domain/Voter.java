@@ -26,7 +26,6 @@ public class Voter extends AuditableEntity{
     private String voterPassword;
 
     @ManyToOne
-    @JoinColumn(name = "election_id")
     private Election election;
 
     public Voter() {

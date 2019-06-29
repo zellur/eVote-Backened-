@@ -9,8 +9,10 @@ import com.votingsystem.easyelection.service.ElectionService;
 import com.votingsystem.easyelection.web.model.ElectionModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Service("electionService")
@@ -20,10 +22,12 @@ public class ElectionServiceImpl implements ElectionService {
     UserRepository userRepository;
 
     @Override
+    @Transactional
     public ElectionModel saveElection(ElectionModel electionModel) throws BadRequestException {
         Long id = SecurityManager.getCurrentUserId();
         if(id == null) throw new BadRequestException("User not logged in");
-        User user = userRepository.getOne(id);
+        Optional<User> optional = userRepository.findById(id);
+        User user = optional.get();
         user.getElections().add(new Election(electionModel));
         userRepository.saveAndFlush(user);
         return electionModel;

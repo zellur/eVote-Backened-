@@ -69,6 +69,7 @@ public class AuthServiceImpl implements AuthService {
         User user = new User(signUpRequest);
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+
         Role userRole =  roleRepository.findByRole(RoleNameEnum.USER.getCode());
                if(userRole == null){
                    return null;

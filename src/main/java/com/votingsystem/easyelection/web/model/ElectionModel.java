@@ -18,7 +18,7 @@ public class ElectionModel extends AbstractModel {
     private String description;
 
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
-    private byte[] image;
+    private String image;
 
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private String startDate;
@@ -70,11 +70,11 @@ public class ElectionModel extends AbstractModel {
         this.description = description;
     }
 
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

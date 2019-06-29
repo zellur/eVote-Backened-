@@ -24,7 +24,7 @@ public class Election extends AuditableEntity {
 
     @Column(name = "image")
     @Lob
-    private byte[] image;
+    private String image;
 
     @Column(name = "start_date")
     private Instant startDate;
@@ -80,11 +80,11 @@ public class Election extends AuditableEntity {
         this.description = description;
     }
 
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(byte[] image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

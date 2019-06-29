@@ -44,8 +44,10 @@ public class AuthController {
         UserPrinciple userPrinciple = authService.getCurrentUser();
         userPrinciple.setPasswords(null);
         byte[] image = userService.getProfilePic();
-        String uri = "data:image/jpeg;base64," + new String(Base64.getEncoder().encode(image));
-        userPrinciple.setImageUrl(uri);
+       if(image != null) {
+           String uri = "data:image/jpeg;base64," + new String(Base64.getEncoder().encode(image));
+           userPrinciple.setImageUrl(uri);
+       }
         return ResponseEntity.ok(userPrinciple);
     }
 

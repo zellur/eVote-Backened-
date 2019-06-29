@@ -21,7 +21,6 @@ public class Candidate extends AuditableEntity {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "election_id")
     private Election election;
 
     public Candidate() {
