@@ -17,7 +17,7 @@ public class UsersRepository {
         List<UserModel> models = null;
         String query = "select * from user";
         try {
-            models = jdbcTemplate.query(query, new Object[] {}, new UserMapper());
+            models = jdbcTemplate.query(query, new UserMapper());
         } catch(Exception e) {
             e.printStackTrace();
         }
